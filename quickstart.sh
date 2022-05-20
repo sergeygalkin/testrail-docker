@@ -187,20 +187,20 @@ echo "If your firewall is not blocking the port, it should also be reachable via
 #####################################
 # getting network adapters IPs to quickly provide TestRail links
 
-netAdapters=$(ip -o link show | awk -F': ' '{print $2}')
-(IFS='
-'
-for adapter in ${netAdapters}
-do
-  :
-    if [ $adapter == "lo" ] || [[ $adapter == "docker"* ]] || [[ $adapter == "br-"* ]] || [[ $adapter == "veth"* ]]; then
-        continue
-    fi
-
-    ip=$(ip addr | grep inet | grep "${adapter}" | awk -F" " '{print $2}'| sed -e 's/\/.*$//')
-    echo "  -->  http://${ip}:${httpPort}"
-done
-)
+#netAdapters=$(ip -o link show | awk -F': ' '{print $2}')
+#(IFS='
+#'
+#for adapter in ${netAdapters}
+#do
+#  :
+##    if [ $adapter == "lo" ] || [[ $adapter == "docker"* ]] || [[ $adapter == "br-"* ]] || [[ $adapter == "veth"* ]]; then
+#        continue
+#    fi
+#
+#    ip=$(ip addr | grep inet | grep "${adapter}" | awk -F" " '{print $2}'| sed -e 's/\/.*$//')
+#    echo "  -->  http://${ip}:${httpPort}"
+#done
+#)
 
 echo
 echo "Please use the following values during TestRail setup:"

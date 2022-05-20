@@ -36,11 +36,18 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'false'
 
   cassandra:
-    image: testrail/cassandra:latest
+    build:
+      context: Dockerfiles/testrail_cassandra
+    environment:
+      - CASSANDRA_KEYSPACE=tr_keyspace
+      - CASSANDRA_USER=cassandra
+      - CASSANDRA_PASSWORD=cassandra
     networks:
       - testrail
     volumes:
       - 'testrail_cassandra:/var/lib/cassandra'
+
+
 
 networks:
   testrail:

@@ -19,6 +19,7 @@ a.out
 _mysql*
 _opt*
 _config/config.php
+_cassandra
 backup/
 *_bak
 support-info.txt
